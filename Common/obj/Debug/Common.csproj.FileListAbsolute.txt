@@ -1,0 +1,13 @@
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\Common.dll
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\Common.pdb
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\System.Security.AccessControl.dll
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\System.Security.Permissions.dll
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\System.Security.Principal.Windows.dll
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\System.Security.AccessControl.xml
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\System.Security.Permissions.xml
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\bin\Debug\System.Security.Principal.Windows.xml
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\obj\Debug\Common.csprojAssemblyReference.cache
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\obj\Debug\Common.csproj.CopyComplete
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\obj\Debug\Common.dll
+E:\ASP_NET_MVC\OnlineShop\OnlineShop\Common\obj\Debug\Common.pdb

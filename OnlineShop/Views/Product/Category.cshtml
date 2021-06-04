@@ -1,0 +1,120 @@
+﻿@model List<Model.ViewModel.ProductViewModel>
+@{
+    var category = (Model.EF.ProductCategory)ViewBag.Category;
+    ViewBag.Title = category.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>@category.Name</h3>
+        </div>
+        <div class="see">
+            <p><a href="#">Xem tất cả</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @foreach (var item in Model)
+        {
+            var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@link"><img src="@item.Images" alt="" /></a>
+                <h2>@item.Name </h2>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0"):"Liên hệ")</span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="/gio-hang/@item.ID">Thêm vào giỏ</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        }
+        <!--Phân trang-->
+        @if (ViewBag.Total > 1)
+        {
+            var pageDispay = (int)(ViewBag.MaxPage);
+            var totalPage = (int)ViewBag.TotalPage;
+            var currentPage = ((int)ViewBag.Page);
+            // Create numeric links
+            var startPageIndex = Math.Max(1, currentPage - pageDispay / 2);
+            var endPageIndex = Math.Min(totalPage, currentPage + pageDispay / 2);
+
+            var link = "/san-pham/" + category.MetaTitle + "-" + category.ID;
+            <div class="clear"></div>
+            <nav>
+                <ul class="pagination">
+                    @*@if (currentPage > ViewBag.First)
+        {
+            <li class="page-item">
+                <a href="@link?page=@ViewBag.First" class="page-link" title="Trang đầu">
+                    <i class="fas fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="@link?page=@ViewBag.Prev" class="page-link" title="Trang trước">
+                    <i class="fas fa-angle-left"></i>
+                </a>
+            </li>
+        }*@
+                    <li class="page-item">
+                        <a href="@link?page=@ViewBag.First" class="page-link" title="Trang đầu">Trang đầu
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="@link?page=@ViewBag.Prev" class="page-link" title="Trang trước">Trang trước
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                        if (currentPage == i)
+                        {
+                            <li class="page-item active">
+                                <a href="@link?page=@i" class="page-link" title="Trang @i">@i</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a href="@link?page=@i" class="page-link" title="Trang @i">@i</a>
+                            </li>
+                        }
+                    }
+                    <li class="page-item">
+                        <a href="@link?page=@ViewBag.Next" class="page-link" title="Trang sau">Trang sau
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="@link?page=@ViewBag.Last" class="page-link" title="Trang cuối">
+                            Trang cuối<i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                    @*@if (currentPage < totalPage)
+                    {
+                        <li class="page-item">
+                            <a href="@link?page=@ViewBag.Next" class="page-link" title="Trang sau">
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a href="@link?page=@ViewBag.Last" class="page-link" title="Trang cuối">
+                                <i class="fas fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                    }*@
+                </ul>
+            </nav>
+        }
+        else
+        {
+            <span>Không có sản phẩm nào</span>
+        }
+    </div>
+</div>

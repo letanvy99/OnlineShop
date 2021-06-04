@@ -1,0 +1,90 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title> Home Shoppe Website Template | Home :: Isource</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="~/Asserts/Client/js/bootstrap.min.js"></script>
+    <script src="~/Asserts/Client/js/jquery-3.5.1.min.js"></script>
+    <script src="~/Asserts/Client/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Asserts/Client/js/all.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/Asserts/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Asserts/Client/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Asserts/Client/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Asserts/Client/js/easing.js"></script>
+    <script type="text/javascript" src="~/Asserts/Client/js/startstop-slider.js"></script>
+    <link href="~/Asserts/Client/css/fontawesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="headertop_desc">
+                @{ Html.RenderAction("TopMenu", "Home");}
+            </div>
+            <div class="header_top">
+                <div class="logo">
+                    <a href="/" ref="nofollow" ><img src="~/Asserts/Client/images/logo.png" alt="" /></a>
+                </div>
+                @{Html.RenderAction("HeaderCart", "Home");}
+                
+                <script type="text/javascript">
+                    function DropDown(el) {
+                        this.dd = el;
+                        this.initEvents();
+                    }
+                    DropDown.prototype = {
+                        initEvents: function () {
+                            var obj = this;
+
+                            obj.dd.on('click', function (event) {
+                                $(this).toggleClass('active');
+                                event.stopPropagation();
+                            });
+                        }
+                    }
+
+                    $(function () {
+
+                        var dd = new DropDown($('#dd'));
+
+                        $(document).click(function () {
+                            // all dropdowns
+                            $('.wrapper-dropdown-2').removeClass('active');
+                        });
+
+                    });
+
+                </script>
+                <div class="clear"></div>
+            </div>
+            <div class="header_bottom">
+                @{Html.RenderAction("MainMenu", "Home");}
+                <div class="search_box">
+                    <form>
+                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+            @RenderSection("slide", required: false)
+        </div>
+
+        <div class="main">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        @{Html.RenderAction("Footer", "Home");}
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    @RenderSection("jsFooter",required: false)
+</body>
+</html>
+
